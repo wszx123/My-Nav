@@ -464,6 +464,7 @@ const index_html = `<!DOCTYPE html>
         }
         .footer a:hover {
             opacity: 1;
+            text-decoration: underline;
         }
         .admin-link {
             text-decoration: none;
@@ -975,9 +976,12 @@ const index_html = `<!DOCTYPE html>
     </div>
     <div class="content" id="content"></div>
     <div class="footer">
-        <p>Copyright (c) 2024 wszx123.</p>
-        <script defer src="https://four-root-occupation.glitch.me/bsz.js"></script>
+        <p>
+            开源于 GitHub 
+            <a href="https://github.com/wszx123/My-Nav" target="_blank">@wszx123</a>
+        </p>
     </div>
+    <script defer src="https://four-root-occupation.glitch.me/bsz.js"></script>
     <script>
         async function loadNavLinks() {
             const [linksResponse, categoriesResponse] = await Promise.all([
