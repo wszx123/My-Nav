@@ -260,7 +260,7 @@ const index_html = `<!DOCTYPE html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Nav</title>
+    <title>ws01导航</title>
     <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>💠</text></svg>">
     <style>
         :root {
@@ -484,7 +484,6 @@ const index_html = `<!DOCTYPE html>
         }
         .captcha-container {
             display: flex;
-            justify-content: space-between;
             gap: 10px;
             align-items: center;
             margin-bottom: 15px;
@@ -545,32 +544,424 @@ const index_html = `<!DOCTYPE html>
             min-height: 120px;
         }
         .link-info {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 5px;
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            flex: 1;
         }
-        .link-info h3 {
-            margin: 0;
-            font-size: 16px;
+        .link-order {
+            min-width: 80px;
             color: var(--text-color);
+            text-align: center;
         }
-        .link-info p {
-            margin: 0;
+        .link-title {
+            min-width: 250px;
+            max-width: 250px;
+            font-weight: bold;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .link-url {
+            min-width: 350px;
+            max-width: 350px;
             color: var(--url-text-color);
-            word-break: break-all;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .link-category {
+            min-width: 120px;
+            max-width: 120px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .link-actions {
+            display: flex;
+            gap: 15px;
+            min-width: 180px;
+            justify-content: flex-end;
+        }
+        .link-actions button {
+            min-width: 80px;
+            padding: 6px 12px;
+        }
+        .link-item {
+            background: var(--card-bg);
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px dashed var(--divider-color);
+        }
+        .link-item:last-child {
+            border-bottom: none;
+        }
+        .link-item:hover {
+            background: var(--card-bg);
+            opacity: 0.95;
+        }
+        .link-info {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+        .link-order {
+            color: var(--text-color);
+            min-width: 80px;
+            text-align: center;
+        }
+        .link-title {
+            font-weight: bold;
+            min-width: 150px;
+        }
+        .link-url {
+            color: var(--url-text-color);
+            flex: 1;
+        }
+        .link-category {
+            color: var(--text-color);
+            min-width: 100px;
         }
         .link-actions {
             display: flex;
             gap: 10px;
-            justify-content: flex-end;
+            margin-left: 20px;
+        }
+        .link-actions button {
+            min-width: 80px;
+            padding: 6px 15px;
+        }
+        .link-meta {
+            display: flex;
+            gap: 15px;
+            margin-top: 8px;
+            padding-top: 8px;
+            border-top: 1px solid #ddd;
+            color: #666;
+            font-size: 13px;
+        }
+        .link-meta span {
+            display: flex;
             align-items: center;
-            margin-top: auto;
+            gap: 4px;
+        }
+        .link-actions {
+            display: flex;
+            gap: 6px;
+        }
+        .link-actions button {
+            flex: 1;
+            padding: 4px 8px;
+            font-size: 12px;
+        }
+        .edit-mode input, .edit-mode textarea, .edit-mode select {
+            margin-bottom: 10px;
+        }
+        .backup-actions {
+            display: flex;
+            gap: 10px;
+        }
+        .backup-dialog {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            min-width: 300px;
+        }
+        .backup-list {
+            margin: 15px 0;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .backup-item {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .backup-item button {
+            padding: 4px 8px;
+            font-size: 12px;
+        }
+        .dialog-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 999;
+        }
+        .edit-actions {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        .edit-actions select {
+            width: 100px;
+            margin-right: auto;
+        }
+        .edit-actions button {
+            min-width: 60px;
+            padding: 6px 12px;
+            height: 32px;
+            flex-shrink: 0;
+        }
+        .btn-group {
+            display: flex;
+            gap: 8px;
+        }
+        input, select, button {
+            height: 32px;
+            box-sizing: border-box;
+        }
+        .edit-mode {
+            background: #f8f9fa;
+            padding: 12px;
+            border-radius: 6px;
+        }
+        .edit-form-row-1 {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+        .edit-form-row-2 {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+        .edit-form-row-3 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+        .edit-actions {
+            display: flex;
+            gap: 8px;
+            justify-content: flex-end;
+        }
+        .edit-actions button {
+            min-width: 60px;
+            padding: 6px 12px;
+            height: 32px;
+            flex-shrink: 0;
+        }
+        .captcha-container {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+        .captcha-code {
+            background: #f0f0f0;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 18px;
+            user-select: none;
+            letter-spacing: 3px;
+            min-width: 80px;
+            text-align: center;
+        }
+        [data-theme="dark"] .captcha-code {
+            background: #2a2a2a;
+            color: #fff;
+        }
+        .captcha-refresh {
+            height: 38px;
+            padding: 8px 15px;
+            flex: 1;
+            white-space: nowrap;
+            min-width: 80px;
+        }
+        .captcha-input {
+            flex: 1;
+            height: 38px;
+            padding: 8px;
+            text-align: center;
+            font-size: 16px;
+        }
+        .captcha-code {
+            background: #f0f0f0;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 18px;
+            user-select: none;
+            letter-spacing: 3px;
+            min-width: 80px;
+            text-align: center;
+        }
+        [data-theme="dark"] .captcha-code {
+            background: #2a2a2a;
+            color: #fff;
+        }
+        .captcha-refresh {
+            height: 38px;
+            padding: 8px 15px;
+            flex: 1;
+            white-space: nowrap;
+            min-width: 80px;
+        }
+        .captcha-input {
+            flex: 1;
+            height: 38px;
+            padding: 8px;
+            text-align: center;
+            font-size: 16px;
+        }
+        .captcha-code {
+            background: #f0f0f0;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 18px;
+            user-select: none;
+            letter-spacing: 3px;
+            min-width: 80px;
+            text-align: center;
+        }
+        [data-theme="dark"] .captcha-code {
+            background: #2a2a2a;
+            color: #fff;
+        }
+        .categories-list {
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 20px !important;
+            margin-top: 20px;
+            width: 100%;
+        }
+        .category-item {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .category-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            width: 100%;
+        }
+        .category-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex: 1;
+        }
+        .category-name {
+            font-weight: bold;
+            margin: 0;
+            min-width: 120px;
+            color: #333;
+        }
+        .category-info {
+            color: #666;
+            font-size: 14px;
+        }
+        .category-actions {
+            display: flex;
+            gap: 8px;
+        }
+        .link-form-row {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 15px;
+            width: 100%;
+        }
+        #title, #description {
+            min-width: 125px;
+            max-width: 125px;
+            flex: 1;
+        }
+        #url {
+            min-width: 415px;
+            max-width: 415px;
+            flex: 1;
+        }
+        #categoryId {
+            min-width: 120px;
+            max-width: 120px;
+        }
+        #linkOrder {
+            min-width: 80px;
+            max-width: 80px;
+            text-align: center;
+        }
+        .btn-add {
+            min-width: 80px !important;
+            max-width: 80px !important;
+            width: 80px !important;
+            padding: 6px 12px;
+            flex: none !important;
+        }
+        .btn-danger {
+            background: #dc3545 !important;  /* 红色背景 */
+            color: white !important;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            padding: 8px 16px;
+            transition: background-color 0.3s;
+        }
+        .btn-danger:hover {
+            background: #c82333 !important;  /* 鼠标悬停时的深红色 */
+        }
+        .admin-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .admin-actions .btn-primary {
+            background: #007bff !important;
+            color: white !important;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            padding: 8px 16px;
+            transition: background-color 0.3s;
+        }
+        .admin-actions .btn-primary:hover {
+            background: #0056b3 !important;
+        }
+        .admin-actions .btn-danger {
+            background: #dc3545 !important;
+            color: white !important;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            padding: 8px 16px;
+            transition: background-color 0.3s;
+        }
+        .admin-actions .btn-danger:hover {
+            background: #c82333 !important;
         }
     </style>
 </head>
 <body>
     <div class="header">
-        <h1>My Nav</h1>
+        <h1>ws01导航</h1>
         <div class="header-right">
             <button class="theme-switch" onclick="toggleTheme()">
                 <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
@@ -872,118 +1263,147 @@ const admin_html = `<!DOCTYPE html>
             padding: 3px 8px;
         }
         .categories-list {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 12px;
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 20px !important;
             margin-top: 20px;
+            width: 100%;
         }
         .category-item {
             background: #f5f5f5;
-            padding: 10px;
-            border-radius: 6px;
+            padding: 15px;
+            border-radius: 8px;
             position: relative;
-            cursor: move;
-            user-select: none;
-        }
-        .category-item.dragging {
-            opacity: 0.5;
-            background: #e0e0e0;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         .category-content {
             display: flex;
-            justify-content: space-between;
             align-items: center;
-            gap: 8px;
+            justify-content: space-between;
+            gap: 15px;
+            width: 100%;
         }
-        .category-item h3 {
-            margin: 0;
-            font-size: 13px;
+        .category-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
             flex: 1;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
+        }
+        .category-name {
+            font-weight: bold;
+            margin: 0;
+            min-width: 120px;
+            color: #333;
+        }
+        .category-info {
+            color: #666;
+            font-size: 14px;
         }
         .category-actions {
             display: flex;
-            gap: 4px;
-        }
-        .category-actions button {
-            padding: 3px 8px;
-            font-size: 12px;
-            min-width: 32px;
+            gap: 8px;
         }
         .link-form-row {
-            display: grid;
-            grid-template-columns: 2fr 3fr 120px auto;
-            gap: 15px;
-            align-items: center;
-        }
-        .link-form-row input,
-        .link-form-row select {
-            height: 36px;
-            box-sizing: border-box;
-        }
-        .link-form-row button {
-            min-width: 100px;
-            height: 36px;
-            margin: 0;
-            padding: 0;
             display: flex;
+            gap: 20px;
             align-items: center;
-            justify-content: center;
+            margin-bottom: 15px;
+            width: 100%;
         }
-        .link-form-row-2 {
-            display: grid;
-            grid-template-columns: 2fr 80px 80px auto;
-            gap: 15px;
-            align-items: center;
-            margin-top: 10px;
+        #title, #description {
+            min-width: 125px;
+            max-width: 125px;
+            flex: 1;
         }
-        select {
-            height: 36px;
-            box-sizing: border-box;
+        #url {
+            min-width: 415px;
+            max-width: 415px;
+            flex: 1;
         }
-        input[type="number"] {
-            height: 36px;
-            box-sizing: border-box;
+        #categoryId {
+            min-width: 120px;
+            max-width: 120px;
+        }
+        #linkOrder {
+            min-width: 80px;
+            max-width: 80px;
+            text-align: center;
+        }
+        .btn-add {
+            min-width: 80px !important;
+            max-width: 80px !important;
+            width: 80px !important;
+            padding: 6px 12px;
+            flex: none !important;
         }
         .links-list {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 0;
             margin-top: 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
         }
         .link-item {
             background: var(--card-bg);
             padding: 15px;
-            margin-bottom: 10px;
-            border-radius: 8px;
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 10px;
-            min-height: 120px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            border-bottom: 2px dashed var(--divider-color);
+        }
+        .link-item:last-child {
+            border-bottom: none;
+        }
+        .link-item:hover {
+            background: var(--card-bg);
+            opacity: 0.95;
         }
         .link-info {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 5px;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 30px;
         }
-        .link-info h3 {
-            margin: 0;
-            font-size: 16px;
+        .link-order {
+            min-width: 80px;
             color: var(--text-color);
+            text-align: center;
         }
-        .link-info p {
-            margin: 0;
+        .link-title {
+            min-width: 250px;
+            max-width: 250px;
+            font-weight: bold;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .link-url {
+            min-width: 350px;
+            max-width: 350px;
             color: var(--url-text-color);
-            word-break: break-all;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .link-category {
+            min-width: 120px;
+            max-width: 120px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
         .link-actions {
             display: flex;
-            gap: 10px;
+            gap: 15px;
+            min-width: 180px;
             justify-content: flex-end;
-            align-items: center;
-            margin-top: auto;
+        }
+        .link-actions button {
+            min-width: 80px;
+            padding: 6px 12px;
         }
         .link-meta {
             display: flex;
@@ -1113,7 +1533,6 @@ const admin_html = `<!DOCTYPE html>
         }
         .captcha-container {
             display: flex;
-            justify-content: space-between;
             gap: 10px;
             align-items: center;
             margin-bottom: 15px;
@@ -1125,11 +1544,9 @@ const admin_html = `<!DOCTYPE html>
             font-family: monospace;
             font-size: 18px;
             user-select: none;
-            cursor: pointer;
             letter-spacing: 3px;
-            text-align: center;
-            flex: 1;
             min-width: 80px;
+            text-align: center;
         }
         [data-theme="dark"] .captcha-code {
             background: #2a2a2a;
@@ -1143,12 +1560,172 @@ const admin_html = `<!DOCTYPE html>
             min-width: 80px;
         }
         .captcha-input {
+            flex: 1;
             height: 38px;
             padding: 8px;
             text-align: center;
             font-size: 16px;
-            flex: 1;
+        }
+        .captcha-code {
+            background: #f0f0f0;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 18px;
+            user-select: none;
+            letter-spacing: 3px;
             min-width: 80px;
+            text-align: center;
+        }
+        [data-theme="dark"] .captcha-code {
+            background: #2a2a2a;
+            color: #fff;
+        }
+        .captcha-refresh {
+            height: 38px;
+            padding: 8px 15px;
+            flex: 1;
+            white-space: nowrap;
+            min-width: 80px;
+        }
+        .captcha-input {
+            flex: 1;
+            height: 38px;
+            padding: 8px;
+            text-align: center;
+            font-size: 16px;
+        }
+        .captcha-code {
+            background: #f0f0f0;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 18px;
+            user-select: none;
+            letter-spacing: 3px;
+            min-width: 80px;
+            text-align: center;
+        }
+        [data-theme="dark"] .captcha-code {
+            background: #2a2a2a;
+            color: #fff;
+        }
+        .categories-list {
+            display: grid !important;
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 20px !important;
+            margin-top: 20px;
+            width: 100%;
+        }
+        .category-item {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            position: relative;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .category-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            width: 100%;
+        }
+        .category-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex: 1;
+        }
+        .category-name {
+            font-weight: bold;
+            margin: 0;
+            min-width: 120px;
+            color: #333;
+        }
+        .category-info {
+            color: #666;
+            font-size: 14px;
+        }
+        .category-actions {
+            display: flex;
+            gap: 8px;
+        }
+        .link-form-row {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+            margin-bottom: 15px;
+            width: 100%;
+        }
+        #title, #description {
+            min-width: 125px;
+            max-width: 125px;
+            flex: 1;
+        }
+        #url {
+            min-width: 415px;
+            max-width: 415px;
+            flex: 1;
+        }
+        #categoryId {
+            min-width: 120px;
+            max-width: 120px;
+        }
+        #linkOrder {
+            min-width: 80px;
+            max-width: 80px;
+            text-align: center;
+        }
+        .btn-add {
+            min-width: 80px !important;
+            max-width: 80px !important;
+            width: 80px !important;
+            padding: 6px 12px;
+            flex: none !important;
+        }
+        .btn-danger {
+            background: #dc3545 !important;  /* 红色背景 */
+            color: white !important;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            padding: 8px 16px;
+            transition: background-color 0.3s;
+        }
+        .btn-danger:hover {
+            background: #c82333 !important;  /* 鼠标悬停时的深红色 */
+        }
+        .admin-actions {
+            display: flex;
+            justify-content: flex-end;
+            gap: 10px;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .admin-actions .btn-primary {
+            background: #007bff !important;
+            color: white !important;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            padding: 8px 16px;
+            transition: background-color 0.3s;
+        }
+        .admin-actions .btn-primary:hover {
+            background: #0056b3 !important;
+        }
+        .admin-actions .btn-danger {
+            background: #dc3545 !important;
+            color: white !important;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            padding: 8px 16px;
+            transition: background-color 0.3s;
+        }
+        .admin-actions .btn-danger:hover {
+            background: #c82333 !important;
         }
     </style>
 </head>
@@ -1160,18 +1737,18 @@ const admin_html = `<!DOCTYPE html>
         </div>
         <div class="captcha-container">
             <input type="text" id="captcha" class="captcha-input" placeholder="验证码" required maxlength="4">
-            <div class="captcha-code" id="captchaCode" onclick="refreshCaptcha()"></div>
-            <button type="button" class="captcha-refresh" onclick="refreshCaptcha()">刷新</button>
+            <div class="captcha-code" id="captchaCode" onclick="refreshCaptcha()" style="cursor: pointer;" title="点击刷新验证码"></div>
         </div>
         <button onclick="login()">登录</button>
     </div>
     
     <div id="adminPanel" style="display: none;">
-        <div style="display: flex; gap: 10px; align-items: center; margin-bottom: 20px;">
-            <button class="logout-btn" onclick="logout()">退出登录</button>
-            <button onclick="backupToKV()" class="btn-backup">备份到KV</button>
-            <button onclick="showRestoreDialog()" class="btn-backup">恢复备份</button>
-            <button onclick="backupToLocal()" class="btn-backup">导出备份</button>
+        <div class="admin-actions">
+            <button onclick="backupToKV()" class="btn-primary">备份到KV</button>
+            <button onclick="backupToLocal()" class="btn-primary">导出备份</button>
+            <button onclick="showRestoreDialog()" class="btn-danger">恢复备份</button>
+            <button onclick="logout()" class="btn-danger">退出登录</button>
+            <a href="/" target="_blank" class="btn-primary">打开前端</a>
         </div>
 
         <div class="section">
@@ -1192,16 +1769,14 @@ const admin_html = `<!DOCTYPE html>
             <h2>链接管理</h2>
             <form id="addLinkForm">
                 <div class="link-form-row">
+                    <input type="number" id="linkOrder" placeholder="排序">
                     <input type="text" id="title" placeholder="标题" required>
+                    <input type="text" id="description" placeholder="描述">
                     <input type="url" id="url" placeholder="URL" required>
                     <select id="categoryId">
                         <option value="">选择分类</option>
                     </select>
                     <button type="submit" class="btn-add">添加链接</button>
-                </div>
-                <div class="link-form-row-2">
-                    <input type="text" id="description" placeholder="描述">
-                    <input type="number" id="linkOrder" placeholder="排序">
                 </div>
             </form>
             <div class="links-list" id="linksList"></div>
@@ -1255,9 +1830,11 @@ const admin_html = `<!DOCTYPE html>
                 div.className = 'category-item';
                 div.innerHTML = \`
                     <div class="category-content">
-                        <h3>\${category.name}</h3>
-                        <div class="category-info">
-                            <span>排序: \${category.order || 0}</span>
+                        <div class="category-left">
+                            <h3 class="category-name">\${category.name}</h3>
+                            <div class="category-info">
+                                <span>排序: \${category.order || 0}</span>
+                            </div>
                         </div>
                         <div class="category-actions">
                             <button class="btn-edit" onclick="editCategory('\${category.id}', '\${category.name}', \${category.order || 0})">编辑</button>
@@ -1333,9 +1910,10 @@ const admin_html = `<!DOCTYPE html>
                 div.setAttribute('data-link-id', link.id);
                 div.innerHTML = \`
                     <div class="link-info">
-                        <h3>\${link.title}</h3>
-                        <p>\${link.url}</p>
-                        <p>\${link.description || ''}</p>
+                        <span class="link-order">排序: \${link.order || 0}</span>
+                        <span class="link-title">\${link.title}</span>
+                        <span class="link-url">\${link.url}</span>
+                        <span class="link-category">\${categoryMap[link.categoryId] || '未分类'}</span>
                     </div>
                     <div class="link-actions">
                         <button onclick="editLink('\${link.id}')" class="btn-edit">编辑</button>
