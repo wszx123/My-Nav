@@ -2,6 +2,8 @@
 
 一个基于 Cloudflare Workers 的轻量级导航网站系统。
 
+2025年1月11日：小调整和主题改变
+
 ## 特性
 
 - 🚀 基于 Cloudflare Workers，无需服务器
