@@ -264,10 +264,10 @@ const index_html = `<!DOCTYPE html>
     <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>💠</text></svg>">
     <style>
         :root {
-            --bg-color: #f5f5f5;
-            --content-bg: #f5f5f5;
-            --card-bg: #E6E6FA;
-            --text-color: #333;
+            --bg-color: #CFCFCF;  /* 背景色，原#f5f5f5 */
+            --content-bg: #EBEBEB;  /* 原#f5f5f5 */
+            --card-bg: #E6E6FA;  /* 原#E6E6FA */
+            --text-color: #1a1a1a;  /* 原#333 */
             --border-color: #6E6E6E;
             --hover-border: #c8c8fa;
             --title-color: #2c3e50;
@@ -277,14 +277,14 @@ const index_html = `<!DOCTYPE html>
             --url-text-color: #666;
         }
         [data-theme="dark"] {
-            --bg-color: #666666;
-            --content-bg: #4F4F4F;
+            --bg-color: #363636;  /* 原#666666 */
+            --content-bg: #666666;  /* 原#4F4F4F */
             --card-bg: #363636;
             --text-color: #ffffff;
-            --border-color: #436EEE;
-            --hover-border: #6495ED;
+            --border-color: #aaa;  /* 边框，原#436EEED */
+            --hover-border: #6495ED;  /* 原#6495ED */
             --title-color: #ffffff;
-            --divider-color: #6495ED;
+            --divider-color: #6495ED;  /* 原#6495ED */
             --category-title-color: #ffffff;
             --link-text-color: #ffffff;
             --url-text-color: #999999;
@@ -969,17 +969,30 @@ const index_html = `<!DOCTYPE html>
                     <circle cx="12" cy="12" r="5"/>
                     <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
                 </svg>
-                <span>切换主题</span>
+                <span>主题</span>
             </button>
-            <a href="/admin" class="admin-link">管理后台</a>
+            <a href="/admin" class="admin-link">登录</a>
         </div>
     </div>
     <div class="content" id="content"></div>
     <div class="footer">
-        <p>
-            开源于 GitHub 
-            <a href="https://github.com/wszx123/My-Nav" target="_blank">@wszx123</a>
-        </p>
+
+            <span id="timeDate">载入天数...</span>
+            <script language="javascript"> 
+            var now = new Date();
+            function createtime(){
+                var grt= new Date("05/09/2024 00:00:00");/*---这里是网站的启用时间--*/
+                now.setTime(now.getTime()+250);
+                days = (now - grt ) / 1000 / 60 / 60 / 24;
+                dnum = Math.floor(days);
+                document.getElementById("timeDate").innerHTML = "稳定运行"+dnum+"天";
+            }
+            setInterval("createtime()",250); 
+        </script> 
+
+        <span <p>  | 本页总访问量 <span id="busuanzi_value_site_pv"></span> 次 | 开源于 GitHub <a href="https://github.com/wszx123/My-Nav" target="_blank">@wszx123</a></p></span>
+        <script defer src="https://four-root-occupation.glitch.me/bsz.js"></script>
+
     </div>
     <script defer src="https://four-root-occupation.glitch.me/bsz.js"></script>
     <script>
@@ -1044,13 +1057,13 @@ const index_html = `<!DOCTYPE html>
                 <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
                 </svg>
-                <span>切换主题</span>
+                <span>主题</span>
             \` : \`
                 <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <circle cx="12" cy="12" r="5"/>
                     <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
                 </svg>
-                <span>切换主题</span>
+                <span>主题</span>
             \`;
         }
 
@@ -2177,7 +2190,7 @@ const admin_html = `<!DOCTYPE html>
                     <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                         <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
                     </svg>
-                    <span>切换主题</span>
+                    <span>主题</span>
                 \`;
             } else {
                 themeBtn.innerHTML = \`
@@ -2185,7 +2198,7 @@ const admin_html = `<!DOCTYPE html>
                         <circle cx="12" cy="12" r="5"/>
                         <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
                     </svg>
-                    <span>切换主题</span>
+                    <span>主题</span>
                 \`;
             }
         }
