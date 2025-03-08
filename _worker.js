@@ -264,7 +264,7 @@ const index_html = `<!DOCTYPE html>
     <link rel="shortcut icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>💠</text></svg>">
     <style>
         :root {
-            --bg-color: #CFCFCF;  /* 背景色，原#f5f5f5 */
+            --bg-color: #CFCFCF;  /* 背景色 */
             --content-bg: #EBEBEB;  /* 原#f5f5f5 */
             --card-bg: #E6E6FA;  /* 原#E6E6FA */
             --text-color: #1a1a1a;  /* 原#333 */
@@ -325,50 +325,7 @@ const index_html = `<!DOCTYPE html>
             gap: 15px;
             align-items: center;
         }
-        @media (max-width: 768px) {
-            .header {
-                flex-direction: column;
-                gap: 15px;
-                margin-bottom: 20px;
-                padding: 0;
-            }
-            .header-right {
-                position: static;
-                width: 100%;
-                justify-content: center;
-            }
-            h1 {
-                margin: 0;
-                font-size: 24px;
-            }
-            .theme-switch {
-                padding: 6px 12px;
-                font-size: 14px;
-            }
-            .admin-link {
-                padding: 6px 12px;
-                font-size: 14px;
-            }
-            .nav-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-                gap: 15px;
-            }
-        }
-        @media (max-width: 480px) {
-            .nav-grid {
-                grid-template-columns: 1fr;
-                gap: 12px;
-            }
-            .header-right {
-                flex-wrap: wrap;
-                gap: 10px;
-            }
-            .theme-switch, .admin-link {
-                flex: 1;
-                min-width: 120px;
-                justify-content: center;
-            }
-        }
+
         .theme-switch {
             background: none;
             border: 2px solid var(--border-color);
@@ -396,9 +353,10 @@ const index_html = `<!DOCTYPE html>
         }
         .nav-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(auto-fill, minmax(188px, 1fr));
+            gap: 18px;
         }
+
         .content {
             flex: 1;
             background: #ffffff;
@@ -431,15 +389,15 @@ const index_html = `<!DOCTYPE html>
         }
         .nav-item h3 {
             margin: 0 0 8px 0;
-            font-size: 16px;
+            font-size: 18px;
             display: flex;
             align-items: center;
             gap: 8px;
             color: var(--text-color);
         }
         .site-icon {
-            width: 16px;
-            height: 16px;
+            width: 15px;
+            height: 15px;
             object-fit: contain;
         }
         .default-icon {
@@ -449,6 +407,76 @@ const index_html = `<!DOCTYPE html>
             background-size: contain;
             display: inline-block;
         }
+
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 15px;
+                margin-bottom: 20px;
+                padding: 0;
+            }
+            .header-right {
+                position: static;
+                width: 100%;
+                justify-content: center;
+            }
+            h1 {
+                margin: 0;
+                font-size: 24px;
+            }
+            .theme-switch {
+                padding: 6px 12px;
+                font-size: 16px;
+            }
+            .admin-link {
+                padding: 6px 12px;
+                font-size: 15px;
+            }
+            .nav-grid {
+                grid-template-columns: repeat(auto-fill, minmax(168px, 1fr));
+                gap: 12px;
+            }
+
+        .site-icon {
+            width: 15px;
+            height: 15px;
+            object-fit: contain;
+        }
+        }
+
+        @media (max-width: 480px) {
+            .nav-grid {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+            .header-right {
+                flex-wrap: wrap;
+                gap: 8px;
+            }
+            .theme-switch, .admin-link {
+                flex: 1;
+                min-width: 120px;
+                justify-content: center;
+            }
+            .nav-grid {
+                grid-template-columns: repeat(auto-fill, minmax(152px, 1fr));
+                gap: 6px;
+            }
+
+        .site-icon {
+            width: 14px;
+            height: 14px;
+            object-fit: contain;
+        }
+        .nav-item h3 {
+            font-size: 15px;
+        }
+        .default-icon {
+            width: 14px;
+            height: 14px;
+        }
+        }
+
         .footer {
             margin-top: auto;
             text-align: center;
@@ -981,7 +1009,7 @@ const index_html = `<!DOCTYPE html>
             <script language="javascript"> 
             var now = new Date();
             function createtime(){
-                var grt= new Date("05/09/2024 00:00:00");/*---这里是网站的启用时间--*/
+                var grt= new Date("01/27/2025 00:00:00");/*---这里是网站的启用时间--*/
                 now.setTime(now.getTime()+250);
                 days = (now - grt ) / 1000 / 60 / 60 / 24;
                 dnum = Math.floor(days);
@@ -990,11 +1018,11 @@ const index_html = `<!DOCTYPE html>
             setInterval("createtime()",250); 
         </script> 
 
-        <span <p>  | 本页总访问量 <span id="busuanzi_value_site_pv"></span> 次 | 开源于 GitHub <a href="https://github.com/wszx123/My-Nav" target="_blank">@wszx123</a></p></span>
-        <script defer src="https://four-root-occupation.glitch.me/bsz.js"></script>
+        <span <p>  | 本页总访问量 <span id="busuanzi_site_pv"></span> 次 | 开源于 GitHub <a href="https://github.com/wszx123/My-Nav" target="_blank">@wszx123</a></p></span>
+        <script defer src="https://bsz.211119.xyz/js"></script>
 
     </div>
-    <script defer src="https://four-root-occupation.glitch.me/bsz.js"></script>
+ 
     <script>
         async function loadNavLinks() {
             const [linksResponse, categoriesResponse] = await Promise.all([
@@ -1778,510 +1806,4 @@ const admin_html = `<!DOCTYPE html>
                         <button type="submit" class="btn-add">添加分类</button>
                     </div>
                 </form>
-            </div>
-            <div class="categories-list" id="categoriesList"></div>
-        </div>
-        
-        <div class="section">
-            <h2>链接管理</h2>
-            <form id="addLinkForm">
-                <div class="link-form-row">
-                    <input type="number" id="linkOrder" placeholder="排序">
-                    <input type="text" id="title" placeholder="标题" required>
-                    <input type="text" id="description" placeholder="描述">
-                    <input type="url" id="url" placeholder="URL" required>
-                    <select id="categoryId">
-                        <option value="">选择分类</option>
-                    </select>
-                    <button type="submit" class="btn-add">添加链接</button>
-                </div>
-            </form>
-            <div class="links-list" id="linksList"></div>
-        </div>
-    </div>
-
-    <script>
-        async function login() {
-            const password = document.getElementById('password').value;
-            const captcha = document.getElementById('captcha').value;
-            
-            if (!captcha) {
-                alert('请输入验证码');
-                return;
-            }
-            
-            if (captcha !== currentCaptcha) {
-                alert('验证码错误');
-                refreshCaptcha();
-                document.getElementById('captcha').value = '';
-                return;
-            }
-            
-            const response = await fetch('/api/login', {
-                method: 'POST',
-                body: JSON.stringify({ password })
-            });
-            
-            if (response.ok) {
-                document.getElementById('loginForm').style.display = 'none';
-                document.getElementById('adminPanel').style.display = 'block';
-                loadCategories();
-                loadLinks();
-            } else {
-                alert('密码错误');
-                refreshCaptcha();
-                document.getElementById('captcha').value = '';
-                document.getElementById('password').value = '';
-            }
-        }
-
-        async function loadCategories() {
-            const response = await fetch('/api/categories');
-            const categories = await response.json();
-            
-            const container = document.getElementById('categoriesList');
-            container.innerHTML = '';
-            
-            categories.forEach(category => {
-                const div = document.createElement('div');
-                div.className = 'category-item';
-                div.innerHTML = \`
-                    <div class="category-content">
-                        <div class="category-left">
-                            <h3 class="category-name">\${category.name}</h3>
-                            <div class="category-info">
-                                <span>排序: \${category.order || 0}</span>
-                            </div>
-                        </div>
-                        <div class="category-actions">
-                            <button class="btn-edit" onclick="editCategory('\${category.id}', '\${category.name}', \${category.order || 0})">编辑</button>
-                            <button class="btn-delete" onclick="deleteCategory('\${category.id}')">删除</button>
-                        </div>
-                    </div>
-                \`;
-                container.appendChild(div);
-            });
-            
-            // 更新链接表单中的分类选择
-            const select = document.getElementById('categoryId');
-            select.innerHTML = '<option value="">选择分类</option>';
-            categories.forEach(category => {
-                select.innerHTML += \`<option value="\${category.id}">\${category.name}</option>\`;
-            });
-
-            // 添加容器的拖拽事件
-            container.addEventListener('dragover', (e) => {
-                e.preventDefault();
-                const draggingItem = document.querySelector('.dragging');
-                const siblings = [...container.querySelectorAll('.category-item:not(.dragging)')];
-                const nextSibling = siblings.find(sibling => {
-                    const box = sibling.getBoundingClientRect();
-                    return e.clientY < box.top + box.height / 2;
-                });
-                
-                if (nextSibling) {
-                    container.insertBefore(draggingItem, nextSibling);
-                } else {
-                    container.appendChild(draggingItem);
-                }
-            });
-
-            container.addEventListener('drop', async (e) => {
-                e.preventDefault();
-                const newOrder = [...container.querySelectorAll('.category-item')].map(item => item.getAttribute('data-id'));
-                await updateCategoryOrder(newOrder);
-            });
-        }
-
-        async function updateCategoryOrder(newOrder) {
-            try {
-                const response = await fetch('/api/categories/reorder', {
-                    method: 'POST',
-                    body: JSON.stringify({ order: newOrder })
-                });
-                if (!response.ok) throw new Error('重排序失败');
-            } catch (error) {
-                alert('更新分类顺序失败：' + error.message);
-                loadCategories();  // 重新加载以恢复原始顺序
-            }
-        }
-
-        async function loadLinks() {
-            const [linksResponse, categoriesResponse] = await Promise.all([
-                fetch('/api/links'),
-                fetch('/api/categories')
-            ]);
-            
-            const links = await linksResponse.json();
-            const categories = await categoriesResponse.json();
-            const categoryMap = Object.fromEntries(
-                categories.map(cat => [cat.id, cat.name])
-            );
-            
-            const container = document.getElementById('linksList');
-            container.innerHTML = '';
-            
-            links.forEach(link => {
-                const div = document.createElement('div');
-                div.className = 'link-item';
-                div.setAttribute('data-link-id', link.id);
-                div.innerHTML = \`
-                    <div class="link-info">
-                        <span class="link-order">排序: \${link.order || 0}</span>
-                        <span class="link-title">\${link.title}</span>
-                        <span class="link-url">\${link.url}</span>
-                        <span class="link-category">\${categoryMap[link.categoryId] || '未分类'}</span>
-                    </div>
-                    <div class="link-actions">
-                        <button onclick="editLink('\${link.id}')" class="btn-edit">编辑</button>
-                        <button onclick="deleteLink('\${link.id}')" class="btn-delete">删除</button>
-                    </div>
-                \`;
-                container.appendChild(div);
-            });
-        }
-
-        document.getElementById('addCategoryForm').onsubmit = async (e) => {
-            e.preventDefault();
-            const category = {
-                name: document.getElementById('categoryName').value,
-                order: Number(document.getElementById('categoryOrder').value) || 0
-            };
-            
-            await fetch('/api/categories', {
-                method: 'POST',
-                body: JSON.stringify(category)
-            });
-            
-            loadCategories();
-            e.target.reset();
-        };
-
-        document.getElementById('addLinkForm').onsubmit = async (e) => {
-            e.preventDefault();
-            const link = {
-                title: document.getElementById('title').value,
-                url: document.getElementById('url').value,
-                description: document.getElementById('description').value,
-                categoryId: document.getElementById('categoryId').value,
-                order: Number(document.getElementById('linkOrder').value) || 0
-            };
-            
-            await fetch('/api/links', {
-                method: 'POST',
-                body: JSON.stringify(link)
-            });
-            
-            loadLinks();
-            e.target.reset();
-        };
-
-        async function deleteCategory(id) {
-            if (confirm('确定要删除这个分类吗？')) {
-                await fetch(\`/api/categories/\${id}\`, { method: 'DELETE' });
-                loadCategories();
-            }
-        }
-
-        async function deleteLink(id) {
-            if (confirm('确定要删除这个链接吗？')) {
-                await fetch(\`/api/links/\${id}\`, { method: 'DELETE' });
-                loadLinks();
-            }
-        }
-
-        async function editCategory(id, name, order) {
-            const newName = prompt('修改分类名称', name);
-            const newOrder = prompt('修改排序（数字越大越靠前）', order);
-            if (newName && newName !== name || newOrder !== null) {
-                await fetch(\`/api/categories/\${id}\`, {
-                    method: 'PUT',
-                    body: JSON.stringify({ 
-                        name: newName || name,
-                        order: newOrder !== null ? Number(newOrder) : order
-                    })
-                });
-                loadCategories();
-            }
-        }
-
-        async function editLink(id) {
-            const links = await (await fetch('/api/links')).json();
-            const link = links.find(l => l.id === id);
-            if (!link) return;
-
-            const div = document.querySelector(\`[data-link-id="\${id}"]\`);
-            div.innerHTML = \`
-                <div class="edit-mode">
-                    <div class="edit-form-row-1">
-                        <input type="text" value="\${link.title}" id="edit-title-\${id}" placeholder="标题">
-                        <input type="url" value="\${link.url}" id="edit-url-\${id}" placeholder="URL">
-                    </div>
-                    <div class="edit-form-row-2">
-                        <input type="text" value="\${link.description || ''}" id="edit-desc-\${id}" placeholder="描述">
-                    </div>
-                    <div class="edit-form-row-3">
-                        <input type="number" value="\${link.order || 0}" id="edit-order-\${id}" placeholder="排序" style="text-align: center;">
-                        <select id="edit-category-\${id}">
-                            <option value="">选择分类</option>
-                            \${document.getElementById('categoryId').innerHTML.slice(28)}
-                        </select>
-                    </div>
-                    <div class="edit-actions">
-                        <button class="btn-edit" onclick="saveLink('\${id}')">保存</button>
-                        <button onclick="loadLinks()">取消</button>
-                    </div>
-                </div>
-            \`;
-            document.getElementById(\`edit-category-\${id}\`).value = link.categoryId || '';
-        }
-
-        async function saveLink(id) {
-            const link = {
-                title: document.getElementById(\`edit-title-\${id}\`).value,
-                url: document.getElementById(\`edit-url-\${id}\`).value,
-                description: document.getElementById(\`edit-desc-\${id}\`).value,
-                categoryId: document.getElementById(\`edit-category-\${id}\`).value
-            };
-            
-            await fetch(\`/api/links/\${id}\`, {
-                method: 'PUT',
-                body: JSON.stringify(link)
-            });
-            
-            loadLinks();
-        }
-
-        async function backupToKV() {
-            try {
-                await fetch('/api/backup-kv', { method: 'POST' });
-                alert('备份成功！');
-            } catch (error) {
-                alert('备份失败：' + error.message);
-            }
-        }
-
-        async function showRestoreDialog() {
-            const dialog = document.createElement('div');
-            dialog.innerHTML = \`
-                <div class="dialog-overlay"></div>
-                <div class="backup-dialog">
-                    <h3>选择要恢复的备份</h3>
-                    <div class="backup-list" id="backupList"></div>
-                    <div style="text-align: right; margin-top: 15px;">
-                        <input type="file" id="localRestore" accept=".json" style="display: none;">
-                        <button onclick="document.getElementById('localRestore').click()" class="btn-backup">从本地文件恢复</button>
-                        <button onclick="closeRestoreDialog()" style="margin-left: 10px;">关闭</button>
-                    </div>
-                </div>
-            \`;
-            document.body.appendChild(dialog);
-
-            // 添加本地文件恢复功能
-            document.getElementById('localRestore').onchange = async (e) => {
-                try {
-                    const file = e.target.files[0];
-                    if (!file) return;
-                    
-                    const text = await file.text();
-                    const data = JSON.parse(text);
-                    
-                    if (!data.categories || !data.links) {
-                        throw new Error('无效的备份文件');
-                    }
-                    
-                    if (confirm('确定要恢复数据吗？这将覆盖当前所有数据！')) {
-                        await fetch('/api/restore', {
-                            method: 'POST',
-                            body: JSON.stringify(data)
-                        });
-                        
-                        alert('数据恢复成功！');
-                        closeRestoreDialog();
-                        loadCategories();
-                        loadLinks();
-                    }
-                } catch (error) {
-                    alert('恢复失败：' + error.message);
-                }
-            };
-
-            const response = await fetch('/api/backup-list');
-            const backups = await response.json();
-            const listContainer = document.getElementById('backupList');
-            
-            backups.sort((a, b) => b.name.localeCompare(a.name)).forEach(backup => {
-                const timestamp = backup.name.replace('backup_', '');
-                const div = document.createElement('div');
-                div.className = 'backup-item';
-                const date = new Date(timestamp).toLocaleString();
-                div.innerHTML = \`
-                    <span>\${date}</span>
-                    <button class="btn-restore" onclick="restoreFromKV('\${backup.name}')">恢复</button>
-                \`;
-                listContainer.appendChild(div);
-            });
-        }
-
-        function closeRestoreDialog() {
-            const dialog = document.querySelector('.dialog-overlay').parentNode;
-            document.body.removeChild(dialog);
-        }
-
-        async function restoreFromKV(key) {
-            if (confirm('确定要恢复此备份吗？这将覆盖当前所有数据！')) {
-                try {
-                    await fetch('/api/restore-kv', {
-                        method: 'POST',
-                        body: JSON.stringify({ key })
-                    });
-                    alert('恢复成功！');
-                    closeRestoreDialog();
-                    loadCategories();
-                    loadLinks();
-                } catch (error) {
-                    alert('恢复失败：' + error.message);
-                }
-            }
-        }
-
-        // 重命名原来的备份函数
-        async function backupToLocal() {
-            try {
-                const [categories, links] = await Promise.all([
-                    fetch('/api/categories').then(r => r.json()),
-                    fetch('/api/links').then(r => r.json())
-                ]);
-                
-                const backupData = {
-                    categories,
-                    links,
-                    timestamp: new Date().toISOString()
-                };
-                
-                const blob = new Blob([JSON.stringify(backupData, null, 2)], { type: 'application/json' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = \`nav-backup-\${backupData.timestamp}.json\`;
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
-            } catch (error) {
-                alert('备份失败：' + error.message);
-            }
-        }
-
-        // 检查本地存储的主题设置
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        document.documentElement.setAttribute('data-theme', savedTheme);
-
-        function toggleTheme() {
-            const currentTheme = document.documentElement.getAttribute('data-theme');
-            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
-            document.documentElement.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-            
-            // 更新图标
-            const themeBtn = document.querySelector('.theme-switch');
-            if (newTheme === 'dark') {
-                themeBtn.innerHTML = \`
-                    <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>
-                    </svg>
-                    <span>主题</span>
-                \`;
-            } else {
-                themeBtn.innerHTML = \`
-                    <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="12" cy="12" r="5"/>
-                        <path d="M12 1v2m0 18v2M4.22 4.22l1.42 1.42m12.72 12.72l1.42 1.42M1 12h2m18 0h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
-                    </svg>
-                    <span>主题</span>
-                \`;
-            }
-        }
-
-        // 初始化验证码变量
-        let currentCaptcha = '';
-
-        // 生成验证码
-        function generateCaptcha() {
-            const min = 1000;
-            const max = 9999;
-            return Math.floor(Math.random() * (max - min + 1) + min).toString();
-        }
-
-        // 刷新验证码
-        function refreshCaptcha() {
-            currentCaptcha = generateCaptcha();
-            const captchaElement = document.getElementById('captchaCode');
-            if (captchaElement) {
-                captchaElement.textContent = currentCaptcha;
-            }
-        }
-
-        // 页面加载完成后立即生成验证码
-        refreshCaptcha();
-
-        // 登录函数
-        async function login() {
-            const password = document.getElementById('password').value;
-            const captcha = document.getElementById('captcha').value;
-            
-            if (!captcha) {
-                alert('请输入验证码');
-                return;
-            }
-            
-            if (captcha !== currentCaptcha) {
-                alert('验证码错误');
-                refreshCaptcha();
-                document.getElementById('captcha').value = '';
-                return;
-            }
-            
-            const response = await fetch('/api/login', {
-                method: 'POST',
-                body: JSON.stringify({ password })
-            });
-            
-            if (response.ok) {
-                document.getElementById('loginForm').style.display = 'none';
-                document.getElementById('adminPanel').style.display = 'block';
-                loadCategories();
-                loadLinks();
-            } else {
-                alert('密码错误');
-                refreshCaptcha();
-                document.getElementById('captcha').value = '';
-                document.getElementById('password').value = '';
-            }
-        }
-
-        // 添加回车键登录支持
-        document.getElementById('password').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                login();
-            }
-        });
-        
-        document.getElementById('captcha').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                login();
-            }
-        });
-
-        function logout() {
-            if (confirm('确定要退出登录吗？')) {
-                document.getElementById('loginForm').style.display = 'block';
-                document.getElementById('adminPanel').style.display = 'none';
-                document.getElementById('password').value = '';
-                document.getElementById('captcha').value = '';
-                refreshCaptcha();
-            }
-        }
-    </script>
-</body>
-</html>`; 
+    
